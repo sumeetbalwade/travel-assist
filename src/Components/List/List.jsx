@@ -9,8 +9,20 @@ import {
 } from "@material-ui/core";
 import React, { useState } from "react";
 import useStyles from "./styles";
+import PlaceDetails from "./../PlaceDetails/PlaceDetails";
 
 const List = () => {
+	const places = [
+		{
+			name: "Cool Place",
+		},
+		{
+			name: "Best Place",
+		},
+		{
+			name: "Good Place",
+		},
+	];
 	const classes = useStyles();
 	const [type, setType] = useState("restaurants");
 	const [rating, setRating] = useState("");
@@ -38,6 +50,14 @@ const List = () => {
 					<MenuItem value={4.5}>Above 4.5</MenuItem>
 				</Select>
 			</FormControl>
+
+			<Grid container spacing={3} className={classes.list}>
+				{places?.map((place, i) => (
+					<Grid item key={i} xs={12}>
+						<PlaceDetails place={place} />
+					</Grid>
+				))}
+			</Grid>
 		</div>
 	);
 };
