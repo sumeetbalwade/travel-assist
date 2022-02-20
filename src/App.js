@@ -3,10 +3,11 @@ import { CssBaseline, Grid } from "@material-ui/core";
 import Header from "./Components/Header/Header";
 import List from "./Components/List/List";
 import Map from "./Components/Map/Map";
-import { getPlacesData } from "./api";
+import { getPlacesData, getWeatherData } from "./api";
 
 export default function App() {
 	const [places, setPlaces] = useState([]);
+	const [weatherData, setWeatherData] = useState([]);
 
 	const [filteredPlaces, setFilteredPlaces] = useState([]);
 	const [coordinates, setCoordinates] = useState({});
@@ -31,18 +32,23 @@ export default function App() {
 	}, [rating]);
 
 	useEffect(() => {
-		setIsloading(true);
-		getPlacesData(type, bounds.sw, bounds.ne).then((data) => {
-			setPlaces(data);
-			setFilteredPlaces([]);
-			setIsloading(false);
-		});
-	}, [type, coordinates, bounds]);
+		if (bounds.sw && bounds.ne) {
+			setIsloading(true);
+			getWeatherData(coordinates.lat, coordinates.lng).then((data) =>
+				setWeatherData(data)
+			);
+			getPlacesData(type, bounds.sw, bounds.ne).then((data) => {
+				setPlaces(data?.filter((place) => place.name && place.num_reviews > 0));
+				setFilteredPlaces([]);
+				setIsloading(false);
+			});
+		}
+	}, [type, bounds]);
 
 	return (
 		<>
 			<CssBaseline />
-			<Header />
+			<Header setCoordinates={setCoordinates} />
 			<Grid container spacing={3} style={{ width: "100%" }}>
 				<Grid item xs={12} md={4}>
 					<List
@@ -62,6 +68,7 @@ export default function App() {
 						coordinates={coordinates}
 						places={filteredPlaces.length ? filteredPlaces : places}
 						setChild={setChild}
+						weatherData={weatherData}
 					/>
 				</Grid>
 			</Grid>
