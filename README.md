@@ -14,7 +14,8 @@ In this project i Learned:
 - And most importantly fetching data from unlimited sources using RapidAPI
 - Essentially, you'll become the master of working with APIs
 
-<a href="https://travel-asist-sb.netlify.app/" target="_blank">https://travel-asist-sb.netlify.app</a>
+## Deployment
+<a href="https://travel-asist-sb.netlify.app/" target="__blank">https://travel-asist-sb.netlify.app</a>
 
 [RapidAPI](https://rapidapi.com/hub?utm_source=youtube.com/JavaScriptMastery&utm_medium=DevRel&utm_campaign=DevRel)
 [Travel Advisor API](https://rapidapi.com/apidojo/api/travel-advisor?utm_source=youtube.com/JavaScriptMastery&utm_medium=DevRel&utm_campaign=DevRel)
