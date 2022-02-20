@@ -9,6 +9,7 @@ export const getPlacesData = async (sw, ne) => {
 			tr_latitude: ne.lat,
 			bl_longitude: sw.lng,
 			tr_longitude: ne.lng,
+			currency: "INR",
 		},
 		headers: {
 			"x-rapidapi-host": process.env.REACT_APP_RAPID_API_HOST,
