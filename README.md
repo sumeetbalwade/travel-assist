@@ -1,6 +1,6 @@
 # Travel Asist
 
-![Travel Asist](https://i.ibb.co/qph2cZn/image.pngg)
+![Travel Asist](https://raw.githubusercontent.com/sumeetbalwade/travel-assist/main/screenshot.jpg)
 
 ## Introduction
 
